@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/sections/Navbar';
 import { Hero } from '@/components/sections/Hero';
+import { HowToPlay } from '@/components/sections/HowToPlay';
 
 const Page = () => {
   return (
@@ -9,9 +10,11 @@ const Page = () => {
 
       {/* --- 3. HERO SECTION --- */}
       <Hero />
+
+      {/* --- 4. HOW TO PLAY SECTION --- */}
+      <HowToPlay />
     </>
   );
 };
 
 export default Page;
-
