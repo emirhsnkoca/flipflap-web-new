@@ -1,6 +1,6 @@
 import { motion, type Variants } from 'framer-motion';
 import { useState, Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
+import { View, PerspectiveCamera } from '@react-three/drei';
 import { Chick } from '@/components/3d/Chick';
 import { Penguin } from '@/components/3d/Penguin';
 import { Flamingo } from '@/components/3d/Flamingo';
@@ -19,7 +19,7 @@ const characters = [
   {
     id: 2,
     name: "BLAZE",
-    color: "bg-cyan-200", // Buz Mavisi
+    color: "bg-cyan-200",
     borderColor: "border-cyan-600",
     image: "/assets/images/logo.jpeg",
     description: "Fierce and fast!"
@@ -27,7 +27,7 @@ const characters = [
   {
     id: 3,
     name: "SHADOW",
-    color: "bg-pink-400", // Pembe
+    color: "bg-pink-400",
     borderColor: "border-pink-700",
     image: "/assets/images/logo.jpeg",
     description: "Mysterious flyer."
@@ -42,7 +42,7 @@ const characters = [
   }
 ];
 
-export const HowToPlay = () => {
+export const Characters = () => {
   const [activeId, setActiveId] = useState<number | null>(null);
 
   const containerVariants: Variants = {
@@ -121,56 +121,19 @@ export const HowToPlay = () => {
             
             {/* KARAKTER GÖRSELİ VEYA 3D MODEL */}
             <div className="absolute inset-0 flex items-center justify-center z-0">
-                {char.id === 1 ? (
-                  <div className="w-full h-full cursor-pointer">
-                     <Canvas camera={{ position: [0, 1, 5], fov: 45 }}>
-                        <ambientLight intensity={0.8} />
-                        <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
-                        <pointLight position={[-5, 5, 5]} intensity={0.5} color="#fff" />
-                        <Suspense fallback={null}>
-                           <Chick />
-                        </Suspense>
-                     </Canvas>
-                  </div>
-                ) : char.id === 2 ? (
-                  <div className="w-full h-full cursor-pointer">
-                     <Canvas camera={{ position: [0, 1, 5], fov: 45 }}>
-                        <ambientLight intensity={0.8} />
-                        <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
-                        <pointLight position={[-5, 5, 5]} intensity={0.5} color="#fff" />
-                        <Suspense fallback={null}>
-                           <Penguin />
-                        </Suspense>
-                     </Canvas>
-                  </div>
-                ) : char.id === 3 ? (
-                  <div className="w-full h-full cursor-pointer">
-                     <Canvas camera={{ position: [0, 1, 5], fov: 45 }}>
-                        <ambientLight intensity={0.8} />
-                        <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
-                        <pointLight position={[-5, 5, 5]} intensity={0.5} color="#fff" />
-                        <Suspense fallback={null}>
-                           <Flamingo />
-                        </Suspense>
-                     </Canvas>
-                  </div>
-                ) : char.id === 4 ? (
-                  /* 4. KART: OWL (TOXIC) */
-                  <div className="w-full h-full cursor-pointer">
-                     <Canvas camera={{ position: [0, 1, 5], fov: 45 }}>
-                        <ambientLight intensity={0.8} />
-                        <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
-                        <pointLight position={[-5, 5, 5]} intensity={0.5} color="#fff" />
-                        <Suspense fallback={null}>
-                           <Owl />
-                        </Suspense>
-                     </Canvas>
-                  </div>
-                ) : (
-                   <div className="w-32 h-32 bg-white/30 rounded-full backdrop-blur-sm border-4 border-white/50 flex items-center justify-center pointer-events-none">
-                      <span className="text-4xl font-titan text-white drop-shadow-md">?</span>
-                   </div>
-                )}
+                <View className="w-full h-full">
+                    <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={45} />
+                    <ambientLight intensity={0.8} />
+                    <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+                    <pointLight position={[-5, 5, 5]} intensity={0.5} color="#fff" />
+                    
+                    <Suspense fallback={null}>
+                        {char.id === 1 && <Chick />}
+                        {char.id === 2 && <Penguin />}
+                        {char.id === 3 && <Flamingo />}
+                        {char.id === 4 && <Owl />}
+                    </Suspense>
+                </View>
             </div>
 
             {/* Karakter Bilgisi (Altta) */}
