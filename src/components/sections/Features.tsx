@@ -10,8 +10,8 @@ export const Features = () => {
         viewport={{ once: true }}
         className="text-center text-white"
       >
-        <h2 className="text-4xl font-black mb-8 stroke-text" style={{ WebkitTextStroke: '2px #4c1d95' }}>Özellikler</h2>
-        <p className="text-xl font-bold">Yakında eklenecek...</p>
+        <h2 className="text-4xl font-black mb-8 stroke-text" style={{ WebkitTextStroke: '2px #4c1d95' }}>Features</h2>
+        <p className="text-xl font-bold">Coming Soon...</p>
       </motion.div>
     </section>
   );

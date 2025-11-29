@@ -6,14 +6,15 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       
       {/* --- 1. ARKA PLAN (Video Katmanı) --- */}
       {/* fixed: Sayfa kaydırılsa bile video sabit kalır */}
-      <div className="fixed inset-0 z-0 w-full h-full bg-black">
+      <div className="fixed inset-0 z-0 w-full h-full bg-sky-300">
          
+         {/* scale-105: Kenarlarda olası boşlukları/siyah çizgileri önlemek için hafif zoom */}
          <video 
            autoPlay 
            loop 
            muted 
            playsInline
-           className="w-full h-full object-cover opacity-100"
+           className="absolute top-0 left-0 w-full h-full object-cover scale-105"
          >
            <source src="/assets/videos/demo.mp4" type="video/mp4" />
            {/* Tarayıcı videoyu desteklemezse görünecek mesaj */}
@@ -25,7 +26,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
          
          {/* Alt kısımdaki Bulutlar */}
          <div className="absolute bottom-0 left-0 w-full z-10 pointer-events-none">
-            <svg viewBox="0 0 1440 320" className="w-full h-auto text-white fill-current drop-shadow-xl">
+            <svg viewBox="0 0 1440 320" className="w-full h-24 md:h-32 lg:h-48 text-white fill-current drop-shadow-xl" preserveAspectRatio="none">
                 <path fillOpacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,197.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
             </svg>
          </div>
