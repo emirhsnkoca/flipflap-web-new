@@ -1,4 +1,4 @@
-import { Download, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
@@ -6,7 +6,7 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="relative z-50 pt-2 md:pt-4 px-4 md:px-6 container mx-auto">
+    <nav className="relative z-50 pt-1 md:pt-2 px-4 md:px-6 container mx-auto">
       <div className="flex justify-between items-center">
         {/* LOGO SOLDA */}
         <motion.div 
@@ -29,9 +29,9 @@ export const Navbar = () => {
         </button>
 
         {/* DESKTOP MENÜ */}
-        <div className="hidden md:flex gap-4 bg-white/40 backdrop-blur-md p-2 rounded-full border-2 border-white/50 shadow-lg">
+        <div className="hidden md:flex gap-5 bg-white/40 backdrop-blur-md p-3 rounded-full border-2 border-white/50 shadow-lg">
            {['Nasıl Oynanır?', 'Karakterler', 'Liderlik Tablosu'].map((item) => (
-             <button key={item} className="px-6 py-2 rounded-full font-bold text-sky-900 hover:bg-white transition-colors">
+             <button key={item} className="px-8 py-3 rounded-full font-bold text-lg text-sky-900 hover:bg-white transition-colors">
                {item}
              </button>
            ))}
@@ -41,10 +41,9 @@ export const Navbar = () => {
         <motion.button 
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95, translateY: 4 }}
-          className="hidden md:flex bg-lime-400 hover:bg-lime-300 text-white text-xl font-black px-8 py-3 rounded-3xl border-b-[6px] border-lime-600 shadow-xl items-center gap-2 uppercase tracking-wide transition-all"
+          className="hidden md:flex bg-lime-400 hover:bg-lime-300 text-white text-2xl font-black px-10 py-4 rounded-[2.5rem] border-b-[8px] border-lime-600 shadow-xl items-center gap-3 uppercase tracking-wide transition-all"
         >
-          <Download size={28} strokeWidth={3} />
-          Hemen İndir
+          PLAY NOW
         </motion.button>
       </div>
 
@@ -63,8 +62,7 @@ export const Navbar = () => {
                </button>
              ))}
              <button className="w-full bg-lime-400 text-white text-xl font-black px-8 py-4 rounded-2xl border-b-[6px] border-lime-600 shadow-xl flex items-center justify-center gap-2 uppercase tracking-wide mt-2 active:translate-y-1 active:border-b-0 transition-all">
-               <Download size={24} strokeWidth={3} />
-               Hemen İndir
+               PLAY NOW
              </button>
           </motion.div>
         )}

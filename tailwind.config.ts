@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         sans: ['Fredoka', 'Nunito', 'sans-serif'],
         fredoka: ['Fredoka', 'sans-serif'],
+        titan: ['"Titan One"', 'cursive'],
       },
       colors: {
         sky: {
@@ -31,4 +32,3 @@ export default {
   },
   plugins: [],
 }
-
