@@ -4,6 +4,7 @@ import { Canvas } from '@react-three/fiber';
 import { Chick } from '@/components/3d/Chick';
 import { Penguin } from '@/components/3d/Penguin';
 import { Flamingo } from '@/components/3d/Flamingo';
+import { Owl } from '@/components/3d/Owl';
 
 // Karakter verileri
 const characters = [
@@ -26,7 +27,7 @@ const characters = [
   {
     id: 3,
     name: "SHADOW",
-    color: "bg-pink-400",
+    color: "bg-pink-400", // Pembe
     borderColor: "border-pink-700",
     image: "/assets/images/logo.jpeg",
     description: "Mysterious flyer."
@@ -34,8 +35,8 @@ const characters = [
   {
     id: 4,
     name: "TOXIC",
-    color: "bg-lime-500",
-    borderColor: "border-lime-800",
+    color: "bg-orange-500",
+    borderColor: "border-orange-800",
     image: "/assets/images/logo.jpeg",
     description: "Green energy!"
   }
@@ -143,7 +144,6 @@ export const HowToPlay = () => {
                      </Canvas>
                   </div>
                 ) : char.id === 3 ? (
-                  /* 3. KART: FLAMINGO */
                   <div className="w-full h-full cursor-pointer">
                      <Canvas camera={{ position: [0, 1, 5], fov: 45 }}>
                         <ambientLight intensity={0.8} />
@@ -151,6 +151,18 @@ export const HowToPlay = () => {
                         <pointLight position={[-5, 5, 5]} intensity={0.5} color="#fff" />
                         <Suspense fallback={null}>
                            <Flamingo />
+                        </Suspense>
+                     </Canvas>
+                  </div>
+                ) : char.id === 4 ? (
+                  /* 4. KART: OWL (TOXIC) */
+                  <div className="w-full h-full cursor-pointer">
+                     <Canvas camera={{ position: [0, 1, 5], fov: 45 }}>
+                        <ambientLight intensity={0.8} />
+                        <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+                        <pointLight position={[-5, 5, 5]} intensity={0.5} color="#fff" />
+                        <Suspense fallback={null}>
+                           <Owl />
                         </Suspense>
                      </Canvas>
                   </div>

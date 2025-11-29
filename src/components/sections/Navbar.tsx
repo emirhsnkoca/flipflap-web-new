@@ -5,6 +5,10 @@ import { useState } from 'react';
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handlePlayNow = () => {
+    window.open('https://chicknsurvivor.vercel.app', '_blank');
+  };
+
   return (
     <nav className="relative z-50 pt-1 md:pt-2 px-4 md:px-6 container mx-auto">
       <div className="flex justify-between items-center">
@@ -39,6 +43,7 @@ export const Navbar = () => {
 
         {/* SAĞ CTA (3D Buton - Desktop) */}
         <motion.button 
+          onClick={handlePlayNow}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95, translateY: 4 }}
           className="hidden md:flex bg-lime-400 hover:bg-lime-300 text-white text-2xl font-black px-10 py-4 rounded-[2.5rem] border-b-[8px] border-lime-600 shadow-xl items-center gap-3 uppercase tracking-wide transition-all"
@@ -61,7 +66,10 @@ export const Navbar = () => {
                  {item}
                </button>
              ))}
-             <button className="w-full bg-lime-400 text-white text-xl font-black px-8 py-4 rounded-2xl border-b-[6px] border-lime-600 shadow-xl flex items-center justify-center gap-2 uppercase tracking-wide mt-2 active:translate-y-1 active:border-b-0 transition-all">
+             <button 
+               onClick={handlePlayNow}
+               className="w-full bg-lime-400 text-white text-xl font-black px-8 py-4 rounded-2xl border-b-[6px] border-lime-600 shadow-xl flex items-center justify-center gap-2 uppercase tracking-wide mt-2 active:translate-y-1 active:border-b-0 transition-all"
+             >
                PLAY NOW
              </button>
           </motion.div>
