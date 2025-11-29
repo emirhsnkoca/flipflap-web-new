@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Nunito:wght@200..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-fredoka;
+  }
+}
+
+/* Custom stroke text utility since Tailwind doesn't have it built-in by default */
+.stroke-text {
+  -webkit-text-stroke: 3px #4c1d95;
+}
+
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+}
