@@ -1,8 +1,10 @@
 import React from 'react';
+import { SmoothScroll } from '@/components/ui/SmoothScroll';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="relative min-h-screen overflow-hidden font-fredoka">
+    <SmoothScroll>
+      <div className="relative min-h-screen overflow-hidden font-fredoka">
       
       {/* --- 1. ARKA PLAN (Video Katmanı) --- */}
       {/* fixed: Sayfa kaydırılsa bile video sabit kalır */}
@@ -29,6 +31,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       <div className="relative z-10 min-h-screen flex flex-col snap-start">
         {children}
       </div>
-    </div>
+      </div>
+    </SmoothScroll>
   );
 };
