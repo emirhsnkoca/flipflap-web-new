@@ -2,6 +2,8 @@ import { motion, type Variants } from 'framer-motion';
 import { useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Chick } from '@/components/3d/Chick';
+import { Penguin } from '@/components/3d/Penguin';
+import { Flamingo } from '@/components/3d/Flamingo';
 
 // Karakter verileri
 const characters = [
@@ -16,16 +18,16 @@ const characters = [
   {
     id: 2,
     name: "BLAZE",
-    color: "bg-orange-500",
-    borderColor: "border-orange-800",
+    color: "bg-cyan-200", // Buz Mavisi
+    borderColor: "border-cyan-600",
     image: "/assets/images/logo.jpeg",
     description: "Fierce and fast!"
   },
   {
     id: 3,
     name: "SHADOW",
-    color: "bg-purple-600",
-    borderColor: "border-purple-900",
+    color: "bg-pink-400",
+    borderColor: "border-pink-700",
     image: "/assets/images/logo.jpeg",
     description: "Mysterious flyer."
   },
@@ -117,25 +119,42 @@ export const HowToPlay = () => {
             <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/comic-dots.png')] pointer-events-none"></div>
             
             {/* KARAKTER GÖRSELİ VEYA 3D MODEL */}
-            {/* pointer-events-none KALDIRILDI ki Canvas'a tıklanabilsin */}
             <div className="absolute inset-0 flex items-center justify-center z-0">
                 {char.id === 1 ? (
-                  /* Sadece FLAPPY için 3D Model */
-                  <div className="w-full h-full cursor-pointer"> {/* Tıklanabilir olduğunu göster */}
+                  <div className="w-full h-full cursor-pointer">
                      <Canvas camera={{ position: [0, 1, 5], fov: 45 }}>
-                        {/* Işıklandırma */}
                         <ambientLight intensity={0.8} />
                         <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
                         <pointLight position={[-5, 5, 5]} intensity={0.5} color="#fff" />
-                        
-                        {/* Model */}
                         <Suspense fallback={null}>
                            <Chick />
                         </Suspense>
                      </Canvas>
                   </div>
+                ) : char.id === 2 ? (
+                  <div className="w-full h-full cursor-pointer">
+                     <Canvas camera={{ position: [0, 1, 5], fov: 45 }}>
+                        <ambientLight intensity={0.8} />
+                        <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+                        <pointLight position={[-5, 5, 5]} intensity={0.5} color="#fff" />
+                        <Suspense fallback={null}>
+                           <Penguin />
+                        </Suspense>
+                     </Canvas>
+                  </div>
+                ) : char.id === 3 ? (
+                  /* 3. KART: FLAMINGO */
+                  <div className="w-full h-full cursor-pointer">
+                     <Canvas camera={{ position: [0, 1, 5], fov: 45 }}>
+                        <ambientLight intensity={0.8} />
+                        <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+                        <pointLight position={[-5, 5, 5]} intensity={0.5} color="#fff" />
+                        <Suspense fallback={null}>
+                           <Flamingo />
+                        </Suspense>
+                     </Canvas>
+                  </div>
                 ) : (
-                   /* Diğerleri için Placeholder */
                    <div className="w-32 h-32 bg-white/30 rounded-full backdrop-blur-sm border-4 border-white/50 flex items-center justify-center pointer-events-none">
                       <span className="text-4xl font-titan text-white drop-shadow-md">?</span>
                    </div>

@@ -2,25 +2,25 @@ import { useAnimations, useFBX, useTexture } from '@react-three/drei';
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
-export function Chick() {
+export function Flamingo() {
   const group = useRef<THREE.Group>(null);
   const [isHit, setIsHit] = useState(false);
   
-  const fbx = useFBX('/assets/models/Chick_Animations.fbx');
-  const texture = useTexture('/assets/models/T_Chick.png');
+  const fbx = useFBX('/assets/models/Flamingo_Animations.fbx');
+  const texture = useTexture('/assets/models/T_Flamingo.png');
   const { actions, names } = useAnimations(fbx.animations, group);
 
   useEffect(() => {
-    // Three.js güncellemesi: encoding yerine colorSpace
     texture.colorSpace = THREE.SRGBColorSpace;
     texture.flipY = true;
 
     fbx.traverse((child) => {
       if ((child as THREE.Mesh).isMesh) {
         const mesh = child as THREE.Mesh;
-        // skinning: true artık otomatik algılanıyor, manuel eklemeye gerek yok
         mesh.material = new THREE.MeshStandardMaterial({
           map: texture,
+          toneMapped: false,
+          color: new THREE.Color(1.5, 1.2, 1.2),
         });
         mesh.castShadow = true;
         mesh.receiveShadow = true;
@@ -29,34 +29,33 @@ export function Chick() {
   }, [fbx, texture]);
 
   useEffect(() => {
-    // Animasyon Mantığı
-    // 1. Idle animasyonunu bul (Öncelik: Idle_A, yoksa Idle, yoksa ilk animasyon)
     const idleAnimName = names.find(n => n.toLowerCase().includes('idle_a')) || names.find(n => n.toLowerCase().includes('idle')) || names[0];
-    // 2. Hit animasyonunu bul
-    const hitAnimName = names.find(n => n.toLowerCase().includes('hit'));
-
-    // Önceki animasyonları durdur
-    Object.values(actions).forEach(action => action?.stop());
+    const hitAnimName = names.find(n => n.toLowerCase().includes('sit')) || names.find(n => n.toLowerCase().includes('hit'));
 
     if (isHit && hitAnimName) {
-      // Tıklanınca HIT oyna
       const action = actions[hitAnimName];
+      const idleAction = idleAnimName ? actions[idleAnimName] : null;
+
       if (action) {
-        action.reset().fadeIn(0.1).setLoop(THREE.LoopOnce, 1).play();
+        if (idleAction) idleAction.fadeOut(0.2);
+
+        // Sit animasyonunu sürekli oynat (Sallanması için)
+        action.reset().fadeIn(0.2).setLoop(THREE.LoopRepeat, Infinity).play();
         
-        // Animasyon bitince tekrar IDLE'a dön
-        action.clampWhenFinished = true;
-        const duration = action.getClip().duration * 1000;
-        
+        // 2 saniye bekle
         const timer = setTimeout(() => {
-          setIsHit(false);
-        }, duration);
+          setIsHit(false); // Idle'a dön
+        }, 2000);
         return () => clearTimeout(timer);
       }
     } else if (idleAnimName) {
-      // Normalde IDLE oyna (Hızını biraz düşürdük: 0.4)
-      const action = actions[idleAnimName];
-      action?.reset().fadeIn(0.5).setEffectiveTimeScale(0.4).play();
+      const idleAction = actions[idleAnimName];
+      const hitAction = hitAnimName ? actions[hitAnimName] : null;
+
+      if (hitAction) hitAction.fadeOut(0.5);
+
+      // Idle'ı başlat (Hız: 0.4)
+      idleAction?.reset().fadeIn(0.5).setEffectiveTimeScale(0.4).play();
     }
   }, [isHit, actions, names]);
 
@@ -64,13 +63,13 @@ export function Chick() {
     <group ref={group} dispose={null} onClick={() => setIsHit(true)}>
       <primitive 
         object={fbx} 
-        scale={0.03} 
-        position={[0, -0.6, 0]}     
-        rotation={[0, 0, 0]}
+        scale={0.017} 
+        position={[0, -0.6, 0]} 
+        rotation={[0, -1.1, 0]}
       />
     </group>
   );
 }
 
-useFBX.preload('/assets/models/Chick_Animations.fbx');
-useTexture.preload('/assets/models/T_Chick.png');
+useFBX.preload('/assets/models/Flamingo_Animations.fbx');
+useTexture.preload('/assets/models/T_Flamingo.png');
