@@ -1,14 +1,16 @@
 import { motion, type Variants } from 'framer-motion';
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { Chick } from '@/components/3d/Chick';
 
-// Karakter verileri (Şimdilik placeholder)
+// Karakter verileri
 const characters = [
   {
     id: 1,
     name: "FLAPPY",
     color: "bg-yellow-400",
     borderColor: "border-yellow-700",
-    image: "/assets/images/logo.jpeg", // Şimdilik logo, sonra 3D karakter gelecek
+    image: "/assets/images/logo.jpeg",
     description: "The classic flipper!"
   },
   {
@@ -38,7 +40,6 @@ const characters = [
 ];
 
 export const HowToPlay = () => {
-  // Hangi panelin aktif (genişlemiş) olduğunu tutar
   const [activeId, setActiveId] = useState<number | null>(null);
 
   const containerVariants: Variants = {
@@ -107,23 +108,42 @@ export const HowToPlay = () => {
             onMouseEnter={() => setActiveId(char.id)}
             onMouseLeave={() => setActiveId(null)}
             className={`
-              relative rounded-[2rem] border-4 border-black overflow-hidden cursor-pointer transition-all duration-500 ease-in-out
+              relative rounded-[2rem] border-4 border-black overflow-hidden cursor-pointer hover:-translate-y-2 transition-transform duration-300
               ${char.color}
-              ${activeId === char.id ? 'md:flex-[3]' : 'md:flex-1'}
               flex-1 flex flex-col items-center justify-end pb-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)]
             `}
           >
-            {/* Arka Plan Deseni (Çizgi Roman Hissi) */}
-            <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/comic-dots.png')]"></div>
+            {/* Arka Plan Deseni */}
+            <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/comic-dots.png')] pointer-events-none"></div>
             
-            {/* Karakter Görseli (Ortada) */}
-            {/* Şimdilik görsel yok, daire placeholder */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-white/30 rounded-full backdrop-blur-sm border-4 border-white/50 flex items-center justify-center">
-                <span className="text-4xl font-titan text-white drop-shadow-md">?</span>
+            {/* KARAKTER GÖRSELİ VEYA 3D MODEL */}
+            {/* pointer-events-none KALDIRILDI ki Canvas'a tıklanabilsin */}
+            <div className="absolute inset-0 flex items-center justify-center z-0">
+                {char.id === 1 ? (
+                  /* Sadece FLAPPY için 3D Model */
+                  <div className="w-full h-full cursor-pointer"> {/* Tıklanabilir olduğunu göster */}
+                     <Canvas camera={{ position: [0, 1, 5], fov: 45 }}>
+                        {/* Işıklandırma */}
+                        <ambientLight intensity={0.8} />
+                        <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+                        <pointLight position={[-5, 5, 5]} intensity={0.5} color="#fff" />
+                        
+                        {/* Model */}
+                        <Suspense fallback={null}>
+                           <Chick />
+                        </Suspense>
+                     </Canvas>
+                  </div>
+                ) : (
+                   /* Diğerleri için Placeholder */
+                   <div className="w-32 h-32 bg-white/30 rounded-full backdrop-blur-sm border-4 border-white/50 flex items-center justify-center pointer-events-none">
+                      <span className="text-4xl font-titan text-white drop-shadow-md">?</span>
+                   </div>
+                )}
             </div>
 
             {/* Karakter Bilgisi (Altta) */}
-            <div className="relative z-10 text-center transform transition-transform duration-300">
+            <div className="relative z-10 text-center transform transition-transform duration-300 mb-4 pointer-events-none">
               <h3 
                 className={`text-4xl font-titan text-white uppercase drop-shadow-lg stroke-text-sm mb-2 ${activeId === char.id ? 'scale-110' : 'scale-100'}`}
                 style={{ WebkitTextStroke: '4px black', paintOrder: 'stroke fill' }}
@@ -131,7 +151,6 @@ export const HowToPlay = () => {
                 {char.name}
               </h3>
               
-              {/* Açıklama sadece aktifken veya mobilde görünür */}
               <motion.p 
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ 
