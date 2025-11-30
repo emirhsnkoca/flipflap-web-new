@@ -34,9 +34,17 @@ export const Navbar = () => {
 
         {/* DESKTOP MENÜ */}
         <div className="hidden md:flex gap-5 bg-white/40 backdrop-blur-md p-3 rounded-full border-2 border-white/50 shadow-lg">
-           {['How to Play?', 'Characters', 'Leaderboard'].map((item) => (
-             <button key={item} className="px-8 py-3 rounded-full font-bold text-lg text-sky-900 hover:bg-white transition-colors">
-               {item}
+           {[
+             { name: 'Characters', id: 'characters' },
+             { name: 'Integrations', id: 'integrations' },
+             { name: 'Roadmap', id: 'roadmap' } // Roadmap bölümü henüz yok
+           ].map((item) => (
+             <button 
+               key={item.name} 
+               onClick={() => document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' })}
+               className="px-8 py-3 rounded-full font-bold text-lg text-sky-900 hover:bg-white transition-colors"
+             >
+               {item.name}
              </button>
            ))}
         </div>
@@ -61,9 +69,20 @@ export const Navbar = () => {
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-full left-0 right-0 mt-4 mx-4 bg-white/90 backdrop-blur-xl rounded-3xl p-6 flex flex-col gap-4 shadow-2xl border-4 border-white md:hidden z-40"
           >
-             {['How to Play?', 'Characters', 'Leaderboard'].map((item) => (
-               <button key={item} className="w-full text-left px-4 py-3 rounded-xl font-black text-sky-900 hover:bg-sky-100 text-lg transition-colors">
-                 {item}
+             {[
+               { name: 'Characters', id: 'characters' },
+               { name: 'Integrations', id: 'integrations' },
+               { name: 'Roadmap', id: 'roadmap' }
+             ].map((item) => (
+               <button 
+                 key={item.name} 
+                 onClick={() => {
+                   setIsOpen(false);
+                   document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
+                 }}
+                 className="w-full text-left px-4 py-3 rounded-xl font-black text-sky-900 hover:bg-sky-100 text-lg transition-colors"
+               >
+                 {item.name}
                </button>
              ))}
              <button 

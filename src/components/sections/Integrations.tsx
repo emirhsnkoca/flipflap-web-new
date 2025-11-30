@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export const Integrations = () => {
   return (
-    <section className="relative min-h-screen bg-sky-400 flex flex-col items-center justify-center overflow-hidden snap-start z-20 py-20">
+    <section id="integrations" className="relative min-h-screen bg-sky-400 flex flex-col items-center justify-center overflow-hidden snap-start z-20 py-20">
       
       {/* --- ÜST BULUT DALGASI (Ters/Sarkan) --- */}
       <div className="absolute top-0 left-0 w-full z-20 pointer-events-none rotate-180 transform -translate-y-1">

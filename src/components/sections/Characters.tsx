@@ -69,7 +69,7 @@ export const Characters = () => {
   };
 
   return (
-    <section className="relative min-h-screen bg-[#8ce026] flex flex-col items-center justify-center overflow-hidden snap-start z-20 py-20">
+    <section id="characters" className="relative min-h-screen bg-[#8ce026] flex flex-col items-center justify-center overflow-hidden snap-start z-20 py-20">
       
       {/* --- TERS BULUT DALGASI --- */}
       <div className="absolute top-0 left-0 w-full z-20 pointer-events-none rotate-180 transform -translate-y-1">
@@ -92,7 +92,7 @@ export const Characters = () => {
           CHARACTERS
         </h2>
         <p className="text-xl text-white font-fredoka font-bold mt-4 max-w-lg mx-auto drop-shadow-md">
-          Choose your wingmate and conquer the skies!
+          Click on a character to discover their special powers!
         </p>
       </motion.div>
 
