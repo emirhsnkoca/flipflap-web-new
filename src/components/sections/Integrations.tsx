@@ -100,7 +100,7 @@ export const Integrations = () => {
              {/* Detaylar (Hover'da Açılır) */}
              <div className="h-0 overflow-hidden group-hover:h-auto transition-all duration-500 opacity-0 group-hover:opacity-100">
                <p className="text-xl font-fredoka font-bold text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] max-w-xs mx-auto leading-relaxed">
-                 A high-speed, reliable, and encrypted game running on the Sui blockchain.
+                 A high speed, reliable, and encrypted game running on the Sui blockchain.
                </p>
              </div>
            </div>
