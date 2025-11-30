@@ -32,46 +32,78 @@ export const Integrations = () => {
       {/* --- KARTLAR --- */}
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10 max-w-5xl">
         
-        {/* KART 1 */}
+        {/* KART 1: SEAL INTEGRATION */}
         <motion.div 
            initial={{ x: -50, opacity: 0 }}
            whileInView={{ x: 0, opacity: 1 }}
            viewport={{ once: true }}
-           whileHover={{ scale: 1.02, rotate: -1 }}
-           className="bg-white rounded-[3rem] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-8 flex flex-col items-center text-center relative overflow-hidden group"
+           whileHover={{ scale: 1.02 }}
+           className="bg-white rounded-[3rem] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center text-center relative overflow-hidden group cursor-pointer h-[400px]"
         >
-           <div className="absolute inset-0 bg-yellow-100 opacity-50 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')] pointer-events-none"></div>
-           
-           <div className="w-32 h-32 bg-yellow-400 rounded-full border-4 border-black flex items-center justify-center mb-6 shadow-lg z-10 group-hover:scale-110 transition-transform">
-             {/* Buraya logo gelecek (Örn: Solana) */}
-             <span className="text-4xl">⚡</span>
+           {/* Kartın Tamamını Kaplayan Görsel */}
+           <div className="absolute inset-0 z-0">
+             <img 
+               src="/assets/images/seal.png" 
+               alt="Seal Integration" 
+               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+             />
            </div>
            
-           <h3 className="text-3xl font-titan text-black mb-4 z-10">High Speed</h3>
-           <p className="text-lg font-fredoka font-bold text-gray-600 z-10">
-             Lightning fast transactions and seamless integration with major networks.
-           </p>
+           {/* İçerik Katmanı (En Üstte) */}
+           <div className="relative z-10 w-full h-full flex flex-col items-center justify-center p-8 transition-all duration-500 group-hover:justify-end group-hover:pb-12">
+             
+             {/* Başlık */}
+             <h3 
+               className="text-6xl font-titan text-white mb-2 transition-all duration-500 group-hover:-translate-y-2"
+               style={{ WebkitTextStroke: '8px black', paintOrder: 'stroke fill' }}
+             >
+               SEAL
+             </h3>
+             
+             {/* Detaylar (Hover'da Açılır) */}
+             <div className="h-0 overflow-hidden group-hover:h-auto transition-all duration-500 opacity-0 group-hover:opacity-100">
+               <p className="text-xl font-fredoka font-bold text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] max-w-xs mx-auto leading-relaxed">
+                 Fully encrypted data protection powered by Seal. Your privacy is our priority!
+               </p>
+             </div>
+           </div>
         </motion.div>
 
-        {/* KART 2 */}
+        {/* KART 2: SUI INTEGRATION */}
         <motion.div 
            initial={{ x: 50, opacity: 0 }}
            whileInView={{ x: 0, opacity: 1 }}
            viewport={{ once: true }}
-           whileHover={{ scale: 1.02, rotate: 1 }}
-           className="bg-white rounded-[3rem] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-8 flex flex-col items-center text-center relative overflow-hidden group"
+           whileHover={{ scale: 1.02 }}
+           className="bg-white rounded-[3rem] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center text-center relative overflow-hidden group cursor-pointer h-[400px]"
         >
-           <div className="absolute inset-0 bg-purple-100 opacity-50 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')] pointer-events-none"></div>
-           
-           <div className="w-32 h-32 bg-purple-400 rounded-full border-4 border-black flex items-center justify-center mb-6 shadow-lg z-10 group-hover:scale-110 transition-transform">
-              {/* Buraya logo gelecek (Örn: Phantom) */}
-              <span className="text-4xl">🔒</span>
+           {/* Kartın Tamamını Kaplayan Görsel */}
+           <div className="absolute inset-0 z-0">
+             <img 
+               src="/assets/images/sui.png" 
+               alt="Sui Integration" 
+               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+             />
            </div>
            
-           <h3 className="text-3xl font-titan text-black mb-4 z-10">Secure Vault</h3>
-           <p className="text-lg font-fredoka font-bold text-gray-600 z-10">
-             Top-tier security protocols ensuring your assets are always safe.
-           </p>
+           {/* İçerik Katmanı (En Üstte) */}
+           <div className="relative z-10 w-full h-full flex flex-col items-center justify-center p-8 transition-all duration-500 group-hover:justify-end group-hover:pb-12">
+             
+             {/* Başlık */}
+             <h3 
+               className="text-6xl font-titan text-white mb-2 transition-all duration-500 group-hover:-translate-y-2"
+               style={{ WebkitTextStroke: '8px black', paintOrder: 'stroke fill' }}
+             >
+               SUI
+             </h3>
+             
+             {/* Detaylar (Hover'da Açılır) */}
+             <div className="h-0 overflow-hidden group-hover:h-auto transition-all duration-500 opacity-0 group-hover:opacity-100">
+               <p className="text-xl font-fredoka font-bold text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] max-w-xs mx-auto leading-relaxed">
+                 A high-speed, reliable, and encrypted game running on the Sui blockchain.
+               </p>
+             </div>
+           </div>
         </motion.div>
 
       </div>
