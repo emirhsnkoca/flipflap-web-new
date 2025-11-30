@@ -10,8 +10,8 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="relative z-50 pt-1 md:pt-2 px-4 md:px-6 container mx-auto">
-      <div className="flex justify-between items-center">
+    <nav className="absolute top-0 left-0 w-full z-50 pt-0 md:pt-2 pointer-events-none">
+      <div className="container mx-auto px-4 md:px-6 flex justify-between items-center pointer-events-auto">
         {/* LOGO SOLDA */}
         <motion.div 
           initial={{ scale: 0 }} animate={{ scale: 1 }} 

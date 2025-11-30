@@ -22,8 +22,8 @@ export function Chick() {
         mesh.material = new THREE.MeshStandardMaterial({
           map: texture,
         });
-        mesh.castShadow = true;
-        mesh.receiveShadow = true;
+        mesh.castShadow = false;
+        mesh.receiveShadow = false;
       }
     });
   }, [fbx, texture]);

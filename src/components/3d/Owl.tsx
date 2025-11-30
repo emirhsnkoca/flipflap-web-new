@@ -21,8 +21,8 @@ export function Owl() {
           map: texture,
           toneMapped: false,
         });
-        mesh.castShadow = true;
-        mesh.receiveShadow = true;
+        mesh.castShadow = false;
+        mesh.receiveShadow = false;
       }
     });
   }, [fbx, texture]);
@@ -35,7 +35,6 @@ export function Owl() {
     Object.values(actions).forEach(action => action?.stop());
 
     if (isHit && hitAnimName) {
-      // Tıklanınca ATTACK oyna
       const action = actions[hitAnimName];
       if (action) {
         action.reset().fadeIn(0.1).setLoop(THREE.LoopOnce, 1).play();
@@ -60,7 +59,7 @@ export function Owl() {
         object={fbx} 
         scale={0.027} 
         position={[0, -0.6, 0]} 
-        rotation={[0, 0, 0]} // Yönünü kontrol edin, tersse -1.5 veya 3.14 deneyebiliriz
+        rotation={[0, 0, 0]}
       />
     </group>
   );

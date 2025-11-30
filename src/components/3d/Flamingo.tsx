@@ -22,8 +22,8 @@ export function Flamingo() {
           toneMapped: false,
           color: new THREE.Color(1.5, 1.2, 1.2),
         });
-        mesh.castShadow = true;
-        mesh.receiveShadow = true;
+        mesh.castShadow = false;
+        mesh.receiveShadow = false;
       }
     });
   }, [fbx, texture]);
