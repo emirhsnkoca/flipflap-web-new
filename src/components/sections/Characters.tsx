@@ -69,7 +69,7 @@ export const Characters = () => {
   };
 
   return (
-    <section className="relative min-h-screen bg-sky-400 flex flex-col items-center justify-center overflow-hidden snap-start z-20 py-20">
+    <section className="relative min-h-screen bg-[#8ce026] flex flex-col items-center justify-center overflow-hidden snap-start z-20 py-20">
       
       {/* --- TERS BULUT DALGASI --- */}
       <div className="absolute top-0 left-0 w-full z-20 pointer-events-none rotate-180 transform -translate-y-1">
@@ -86,8 +86,8 @@ export const Characters = () => {
         className="relative z-10 mb-12 text-center"
       >
         <h2 
-          className="text-5xl md:text-7xl font-titan text-white drop-shadow-lg stroke-text"
-          style={{ WebkitTextStroke: '8px #0c4a6e', paintOrder: 'stroke fill' }}
+          className="text-7xl md:text-8xl font-titan text-white stroke-text drop-shadow-[0_15px_5px_rgba(0,0,0,0.4)]"
+          style={{ WebkitTextStroke: '16px #5c2a0b', paintOrder: 'stroke fill' }}
         >
           CHARACTERS
         </h2>
@@ -111,7 +111,7 @@ export const Characters = () => {
             onMouseEnter={() => setActiveId(char.id)}
             onMouseLeave={() => setActiveId(null)}
             className={`
-              relative rounded-[2rem] border-4 border-black overflow-hidden cursor-pointer hover:-translate-y-2 transition-transform duration-300
+              relative rounded-[2rem] border-8 border-black overflow-hidden cursor-pointer hover:-translate-y-2 transition-transform duration-300
               ${char.color}
               flex-1 flex flex-col items-center justify-end pb-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)]
             `}
@@ -120,7 +120,7 @@ export const Characters = () => {
             <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/comic-dots.png')] pointer-events-none"></div>
             
             {/* KARAKTER GÖRSELİ VEYA 3D MODEL */}
-            <div className="absolute inset-0 flex items-center justify-center z-0">
+            <div className="absolute inset-0 flex items-center justify-center z-10">
                 <View className="w-full h-full">
                     <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={45} />
                     <ambientLight intensity={0.8} />
@@ -159,6 +159,13 @@ export const Characters = () => {
           </motion.div>
         ))}
       </motion.div>
+
+      {/* --- ALT BULUT DALGASI (Section Bitimi) --- */}
+      <div className="absolute bottom-0 left-0 w-full z-20 pointer-events-none transform translate-y-1">
+         <svg viewBox="0 0 1440 320" className="w-full h-16 md:h-24 lg:h-32 text-white fill-current" preserveAspectRatio="none">
+             <path fillOpacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,197.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+         </svg>
+      </div>
 
     </section>
   );

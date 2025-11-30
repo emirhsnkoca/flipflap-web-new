@@ -2,24 +2,25 @@ import { motion } from 'framer-motion';
 
 export const Hero = () => {
   return (
-    <section className="relative w-full">
-      {/* --- VİDEO KATMANI (Boyut Verici) --- */}
-      <video 
-         autoPlay 
-         loop 
-         muted 
-         playsInline
-        className="w-full h-auto block relative z-0"
-      >
-        <source src="/assets/videos/demoo.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
-      {/* --- KARARTMA KATMANI --- */}
-      <div className="absolute inset-0 bg-black/30 pointer-events-none z-10"></div>
+    <section className="relative w-full min-h-screen flex flex-col">
+      {/* --- VİDEO KATMANI (Arka Plan) --- */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
+        <video 
+           autoPlay 
+           loop 
+           muted 
+           playsInline
+           className="absolute top-0 left-0 w-full h-full object-cover"
+        >
+          <source src="/assets/videos/demoo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {/* --- KARARTMA KATMANI (Videonun Üstünde) --- */}
+        <div className="absolute inset-0 bg-black/30 pointer-events-none"></div>
+      </div>
 
       {/* --- İÇERİK KATMANI (Videonun Üstünde) --- */}
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pt-20 md:pt-0">
+      <div className="relative z-20 flex-grow flex flex-col items-center justify-center pt-20 md:pt-0">
         
       {/* MERKEZ: Metin ve Aksiyon */}
       <div className="text-center space-y-8 max-w-4xl mx-auto px-4">

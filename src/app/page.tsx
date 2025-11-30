@@ -1,6 +1,7 @@
 import { Navbar } from '@/components/sections/Navbar';
 import { Hero } from '@/components/sections/Hero';
 import { Characters } from '@/components/sections/Characters';
+import { Integrations } from '@/components/sections/Integrations';
 
 const Page = () => {
   return (
@@ -13,6 +14,9 @@ const Page = () => {
 
       {/* --- 4. CHARACTERS SECTION --- */}
       <Characters />
+
+      {/* --- 5. INTEGRATIONS SECTION --- */}
+      <Integrations />
     </>
   );
 };

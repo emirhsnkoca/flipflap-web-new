@@ -13,7 +13,7 @@ export default function Scene() {
         width: '100vw',
         height: '100vh',
         pointerEvents: 'none', // Tıklamaları alttaki DOM'a geçir
-        zIndex: 30, // İçeriğin üstünde ama tıklanamaz (View track ile tıklama alınır)
+        zIndex: 50, // İçeriğin üstünde ama tıklanamaz (View track ile tıklama alınır)
       }}
       eventSource={document.body}
       eventPrefix="client"
