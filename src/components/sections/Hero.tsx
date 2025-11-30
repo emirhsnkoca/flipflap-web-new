@@ -26,14 +26,17 @@ export const Hero = () => {
       <div className="text-center space-y-8 max-w-4xl mx-auto px-4">
         <motion.h1 
           initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
-          className="text-5xl sm:text-6xl md:text-8xl font-titan text-white leading-tight tracking-wide hero-title mt-40"
+          className="text-5xl sm:text-6xl md:text-8xl font-titan text-white leading-tight tracking-wide hero-title mt-20"
         >
           IT'S <span className="text-yellow-300">FLIP</span><span className="text-lime-400">FLAP</span> <br />
           <span className="text-yellow-300">TIME!</span>
         </motion.h1>
         
-        <p className="text-xl md:text-2xl text-white font-bold drop-shadow-md max-w-2xl mx-auto px-4 font-fredoka block relative mt-20">
-          Put on your cutest wings, overcome obstacles, and start bouncing above the clouds. Are you ready for the adventure?
+        <p 
+          className="text-xl md:text-2xl text-white font-bold drop-shadow-md max-w-2xl mx-auto px-4 font-fredoka block relative"
+          style={{ marginTop: '236px' }}
+        >
+          Are you ready to play the <span className="text-yellow-300 drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">world's first Seal integrated game</span>? Improve yourself on a deserted island with this brave chick!
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 md:gap-8 justify-center pt-8 px-4">

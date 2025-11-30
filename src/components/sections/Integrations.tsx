@@ -19,8 +19,8 @@ export const Integrations = () => {
         className="relative z-10 mb-16 text-center"
       >
         <h2 
-          className="text-5xl md:text-7xl font-titan text-white drop-shadow-lg stroke-text"
-          style={{ WebkitTextStroke: '8px #0c4a6e', paintOrder: 'stroke fill' }}
+          className="text-6xl md:text-8xl font-titan text-white drop-shadow-[0_15px_5px_rgba(0,0,0,0.4)] stroke-text"
+          style={{ WebkitTextStroke: '12px #0c4a6e', paintOrder: 'stroke fill' }}
         >
           INTEGRATIONS
         </h2>
