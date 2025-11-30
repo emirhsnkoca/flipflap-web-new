@@ -37,7 +37,7 @@ export const Navbar = () => {
            {[
              { name: 'Characters', id: 'characters' },
              { name: 'Integrations', id: 'integrations' },
-             { name: 'Roadmap', id: 'roadmap' } // Roadmap bölümü henüz yok
+             { name: 'Roadmap', id: 'roadmap' }
            ].map((item) => (
              <button 
                key={item.name} 
